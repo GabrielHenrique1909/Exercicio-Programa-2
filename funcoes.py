@@ -90,4 +90,14 @@ def calcula_pontos_regra_avancada(dados):
     r['sequencia_alta'] = calcula_pontos_sequencia_alta(dados)
     r['sequencia_baixa'] = calcula_pontos_sequencia_baixa(dados)
     return  r
-    
+
+def faz_jogada(dados, categoria, cartela_de_pontos):
+    s = calcula_pontos_regra_simples(dados)
+    a = calcula_pontos_regra_avancada(dados)
+    for chave in cartela_de_pontos['regra_simples']:
+        if str(chave) == categoria:
+            cartela_de_pontos['regra_simples'][chave] = s[chave]
+    for chave in cartela_de_pontos['regra_avancada']:
+        if chave == categoria:
+            cartela_de_pontos['regra_avancada'][categoria] = a[categoria]
+    return cartela_de_pontos
