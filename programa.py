@@ -2,6 +2,9 @@ from funcoes import *
 
 combinacoespossiveis = ["1","2","3","4","5","6","sem_combinacao",'quadra','full_house',"sequencia_baixa","sequencia_alta","cinco_iguais"]
 indicespossiveis = [0,1,2,3,4]
+disponibilidade = {}
+for comb in combinacoespossiveis:
+    disponibilidade[comb]=True    
 cartela_de_pontos = {
     'regra_simples':  {
         1:-1,
@@ -46,7 +49,7 @@ while contagemjogos <13:
             dadosrolados = roladoeguardado[0]
             dadosguardados = roladoeguardado[1]    
         if entrada == '2':
-            print("Digite o índice do dado a ser removido (0 a 4)")
+            print("Digite o índice do dado a ser removido (0 a 4):")
             indice = int(input(">"))
             while indice not in indicespossiveis:
                 print('Opção inválida. Tente novamente.')
@@ -55,7 +58,7 @@ while contagemjogos <13:
             dadosrolados = roladoeguardado[0]
             dadosguardados = roladoeguardado[1]
         if entrada == "3":
-            if contagemrerolagem == 3:
+            if contagemrerolagem >= 3:
                 print('Você já usou todas as rerrolagens.')
             else:
                 dadosrolados = rolar_dados(len(dadosrolados))
@@ -72,23 +75,17 @@ while contagemjogos <13:
     while combinacao not in combinacoespossiveis:
         print("Combinação inválida. Tente novamente.")
         combinacao = input(">")    
-    if combinacao.isnumeric()==True:
-        combinacao = int(combinacao)  
-        while cartela_de_pontos["regra_simples"][combinacao]!=-1:
-            print('Essa combinação já foi utilizada.') 
-            combinacao = input(">")
-            if combinacao.isnumeric()==True:
-                combinacao = int(combinacao)  
-    else:
-        while cartela_de_pontos["regra_avancada"][combinacao]!=-1:
-            print('Essa combinação já foi utilizada.')    
+    while disponibilidade[combinacao]!=True:
+        print('Essa combinação já foi utilizada.') 
+        combinacao = input(">")
+        while combinacao not in combinacoespossiveis:
+            print("Combinação inválida. Tente novamente.")
             combinacao = input(">")    
-
-    cartela_de_pontos = faz_jogada(dados, str(combinacao), cartela_de_pontos)
+    disponibilidade[combinacao]=False    
+    cartela_de_pontos = faz_jogada(dados, combinacao, cartela_de_pontos)
     contagemjogos += 1
     if contagemjogos==13:
         break
-    imprime_cartela(cartela_de_pontos)
     dadosrolados = rolar_dados(5)
     dadosguardados = []
     print(f"Dados rolados: {dadosrolados}")
