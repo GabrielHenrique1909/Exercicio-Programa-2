@@ -72,3 +72,11 @@ def calcula_pontos_quadra(dados):
             return s
     return 0
 
+def calcula_pontos_quina(dados):
+    dic = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+    for dado in dados:
+        dic[dado]+= 1
+    for chave in dic.keys():
+        if dic[chave]>4:
+            return 50
+    return 0
