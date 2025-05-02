@@ -52,9 +52,23 @@ def calcula_pontos_sequencia_alta(dados):
     
 def calcula_pontos_full_house(dados):
     dic = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+    s = 0
     for dado in dados:
         dic[dado]+= 1
+        s += dado
     if 2 in dic.values() and 3 in dic.values():
-        return sum(dados)
+        return s
     else: 
         return 0
+
+def calcula_pontos_quadra(dados):
+    dic = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+    s = 0
+    for dado in dados:
+        dic[dado]+= 1
+        s += dado
+    for chave in dic.keys():
+        if dic[chave]>3:
+            return s
+    return 0
+
