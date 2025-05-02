@@ -31,4 +31,6 @@ def calcula_pontos_soma(dados):
     for dado in dados:
         soma += dado
     return soma
+
+gvjkgv igi 
  
