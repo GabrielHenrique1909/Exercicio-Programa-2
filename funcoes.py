@@ -12,3 +12,10 @@ def guardar_dado(dadosrolados, dadosguardados, dadoparaguardar):
             dadosguardados.append(dadosrolados[i])
             del dadosrolados[i]
     return [dadosrolados,dadosguardados]        
+
+def remover_dado(dadosrolados, dadosguardados, dadopararemover):
+    for i in range(len(dadosguardados)):
+        if i == dadopararemover:
+            dadosrolados.append(dadosguardados[i])
+            del dadosguardados[i]
+    return [dadosrolados, dadosguardados]
