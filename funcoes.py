@@ -19,3 +19,9 @@ def remover_dado(dadosrolados, dadosguardados, dadopararemover):
             dadosrolados.append(dadosguardados[i])
             del dadosguardados[i]
     return [dadosrolados, dadosguardados]
+
+def calcula_pontos_regra_simples(dados):
+    pontcategorias = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+    for dado in dados:
+        pontcategorias[dado]+=dado
+    return pontcategorias
