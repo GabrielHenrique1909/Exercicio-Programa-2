@@ -80,3 +80,14 @@ def calcula_pontos_quina(dados):
         if dic[chave]>4:
             return 50
     return 0
+
+def calcula_pontos_regra_avancada(dados):
+    r = {}
+    r['cinco_iguais'] = calcula_pontos_quina(dados)
+    r['full_house'] = calcula_pontos_full_house(dados)
+    r['quadra'] = calcula_pontos_quadra(dados)
+    r['sem_combinacao'] = calcula_pontos_soma(dados)
+    r['sequencia_alta'] = calcula_pontos_sequencia_alta(dados)
+    r['sequencia_baixa'] = calcula_pontos_sequencia_baixa(dados)
+    return  r
+    
