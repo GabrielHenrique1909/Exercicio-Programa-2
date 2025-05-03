@@ -36,7 +36,7 @@ contagemjogos=1
 while contagemjogos <13:
     contagemrerolagem=1
     while entrada != "0":
-        while entrada not in "01234":
+        while entrada not in ['0','1','2','3','4']:
             print('Opção inválida. Tente novamente.')
             entrada = input(">")
         if entrada == "1":
@@ -69,6 +69,7 @@ while contagemjogos <13:
         print(f"Dados guardados: {dadosguardados}")
         print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
         entrada = input(">")    
+
     print('Digite a combinação desejada:')
     dados = dadosrolados + dadosguardados
     combinacao = input(">")    
