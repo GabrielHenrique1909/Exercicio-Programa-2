@@ -39,6 +39,8 @@ while contagemjogos <13:
         while entrada not in ['0','1','2','3','4']:
             print('Opção inválida. Tente novamente.')
             entrada = input(">")
+        if entrada == "0":
+            break    
         if entrada == "1":
             print("Digite o índice do dado a ser guardado (0 a 4):")
             indice = int(input(">"))
